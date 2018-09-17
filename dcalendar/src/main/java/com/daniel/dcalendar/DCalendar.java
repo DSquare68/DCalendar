@@ -1,4 +1,4 @@
-package dcalendar;
+package com.daniel.dcalendar;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

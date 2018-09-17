@@ -1,4 +1,4 @@
-package com.daniel.dcalendar2;
+package com.daniel.dcalendar;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

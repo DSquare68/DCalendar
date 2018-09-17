@@ -1,1 +1,1 @@
-include ':app', ':dcalendar2'
+include ':app', ':dcalendar'

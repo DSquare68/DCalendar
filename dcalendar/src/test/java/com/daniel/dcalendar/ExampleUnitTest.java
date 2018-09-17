@@ -1,4 +1,4 @@
-package com.daniel.dcalendar2;
+package com.daniel.dcalendar;
 
 import org.junit.Test;
 
