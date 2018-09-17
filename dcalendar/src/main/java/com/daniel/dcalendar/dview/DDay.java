@@ -1,4 +1,4 @@
-package dcalendar;
+package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.util.AttributeSet;

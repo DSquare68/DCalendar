@@ -1,11 +1,9 @@
-package dcalendar;
+package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-
-import com.daniel.dcalendar.R;
 
 public class DMonth extends LinearLayout {
 
