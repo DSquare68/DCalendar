@@ -15,7 +15,7 @@ public class DCalendar extends LinearLayout {
 
     public DCalendar(Context context) {
         super(context);
-        addView(new TopBar(getContext()), new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        addView(new TopBar(getContext()), new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int) getResources().getDimension(R.dimen.arrow_height)));
     }
 
     public DCalendar(Context context, @Nullable AttributeSet attrs) {
