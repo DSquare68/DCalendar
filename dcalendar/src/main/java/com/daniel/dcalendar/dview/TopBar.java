@@ -10,16 +10,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daniel.dcalendar.R;
+import com.daniel.dcalendar.logic.TopBarLogic;
+
 import java.util.Date;
 
 public class TopBar extends LinearLayout {
 
     ImageView leftArrow, rightArrow;
-    TextView nameOfMonth;
+    static TextView nameOfMonth;
+    static String[] monthNames ;
+
     public TopBar(Context context) {
         super(context);
         setOrientation(HORIZONTAL);
         setWeightSum(5);
+        monthNames = context.getResources().getStringArray(R.array.month);
 
         LayoutParams lpL = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         lpL.weight=2;
@@ -33,11 +38,12 @@ public class TopBar extends LinearLayout {
         leftArrow = new ImageView(getContext());
         leftArrow.setBackgroundResource(R.drawable.left_arrow);
 
+
         rightArrow = new ImageView(getContext());
         rightArrow.setBackgroundResource(R.drawable.right_arrow);
 
+
         Date today = new Date();
-        String[] monthNames = context.getResources().getStringArray(R.array.month);
         nameOfMonth = new TextView(getContext());
         nameOfMonth.setText(monthNames[today.getMonth()]+" "+ String.valueOf(today.getYear()+1900));
         nameOfMonth.setGravity(Gravity.CENTER);
@@ -45,9 +51,15 @@ public class TopBar extends LinearLayout {
         addView(leftArrow,lpL);
         addView(nameOfMonth,lpText);
         addView(rightArrow,lpR);
+
+        TopBarLogic.setListener(getContext(),leftArrow,rightArrow);
     }
 
     public TopBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public static void setMonthText(int month, int year) {
+        nameOfMonth.setText(monthNames[month]+" "+ String.valueOf(year+1900));
     }
 }

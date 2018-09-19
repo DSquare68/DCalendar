@@ -2,6 +2,8 @@ package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.R;
 
@@ -14,10 +16,17 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     private boolean setDefault;
     private boolean isEvent;
 
-    public DDay(Context context, boolean setDefault, boolean isEvent) {
+    public DDay(Context context,int dayNumber, boolean setDefault, boolean isEvent) {
         super(context);
+        setText(String.valueOf(dayNumber));
         this.isEvent=isEvent;
         this.setDefault=setDefault;
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.weight=1;
+        lp.setMargins((int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday));
+        setLayoutParams(lp);
+
         if(this.setDefault){
             if(this.isEvent ==true){
                 setBackgroundResource(R.drawable.calendar_week_day_button_pressed);
@@ -28,5 +37,11 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     }
     public DDay(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    @Override
+    protected void onMeasure(int width, int height) {
+        super.onMeasure(width, height);
+        this.setMeasuredDimension(width, width);
     }
 }

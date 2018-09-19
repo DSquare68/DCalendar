@@ -9,10 +9,11 @@ public class DWeek extends LinearLayout {
 
     private final static int NUMBER_OF_DAYS=7;
 
-    public DWeek(Context context) {
+    public DWeek(Context context, int[] daysNumber) {
         super(context);
+        setWeightSum(7);
         for(int i=0;i<NUMBER_OF_DAYS;i++){
-            addView(new DDay(context,true,true));
+            addView(new DDay(context,daysNumber[i], true,true));
         }
     }
 
