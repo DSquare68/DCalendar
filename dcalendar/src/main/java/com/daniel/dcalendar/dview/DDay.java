@@ -2,10 +2,12 @@ package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.R;
+import com.daniel.dcalendar.logic.DDayLogic;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {
@@ -34,6 +36,14 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
                 setBackgroundResource(R.drawable.calendar_week_day_button_unpressed);
             }
         }
+
+        setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                DDayLogic.openDialog(getContext());
+                return false;
+            }
+        });
     }
     public DDay(Context context, AttributeSet attrs) {
         super(context, attrs);
