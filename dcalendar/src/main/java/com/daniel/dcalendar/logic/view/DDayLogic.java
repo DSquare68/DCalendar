@@ -1,4 +1,4 @@
-package com.daniel.dcalendar.logic;
+package com.daniel.dcalendar.logic.view;
 
 import android.content.Context;
 import android.content.Intent;

@@ -2,11 +2,10 @@ package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.daniel.dcalendar.logic.DMonthLogic;
+import com.daniel.dcalendar.logic.view.DMonthLogic;
 
 public class DMonth extends LinearLayout {
 

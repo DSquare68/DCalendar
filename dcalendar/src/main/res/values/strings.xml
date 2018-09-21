@@ -20,7 +20,7 @@
     <string name="end_date">End date:</string>
     <string name="end_time">End time:</string>
     <string name="location">Location:</string>
-    <string name="reminder">Remind before:</string>
+    <string name="reminder">Remind\nbefore:</string>
     <string-array name="reminder_time">
         <item>5 min</item>
         <item>10 min</item>
@@ -31,4 +31,6 @@
     <string name="description">Description</string>
     <string name="short_description">Short description</string>
     <string name="title_activity_devent_adding">DEventAdding</string>
+    <string name="add">Add</string>
+    <string name="city">City</string>
 </resources>

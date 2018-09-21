@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.R;
-import com.daniel.dcalendar.logic.DDayLogic;
+import com.daniel.dcalendar.logic.view.DDayLogic;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {

@@ -1,6 +1,10 @@
 package com.daniel.dcalendar.event;
 
-public class DEvent {
+import android.content.ContentValues;
+
+import com.daniel.dcalendar.logic.app.DateAndTime;
+
+public class DEvent implements  Columns{
     String name,location,desctiption;
     long startTime,endTime,remindTime;
 
@@ -62,5 +66,16 @@ public class DEvent {
 
     public void setRemindTime(long remindTime) {
         this.remindTime = remindTime;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues cv = new ContentValues();
+        cv.put(EVENT_NAME,name);
+        cv.put(START_TIME, startTime);
+        cv.put(END_TIME,endTime);
+        cv.put(LOCATION,location);
+        cv.put(DESCRIPTION,desctiption);
+        cv.put(REMIND_TIME,remindTime);
+        return  cv;
     }
 }

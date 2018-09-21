@@ -27,9 +27,9 @@ public class DEventDatabase extends SQLiteOpenHelper {
                 Columns.EVENT_NAME + " TEXT, "+
                 Columns.START_TIME + " INTEGER, "+
                 Columns.END_TIME + " INTEGER, "+
-                Columns.LOCATION + " INTEGER, "+
+                Columns.LOCATION + " TEXT, "+
                 Columns.DESCRIPTION+ " TEXT, "+
-                Columns.REMIND_TIME+ " TEXT ); ";
+                Columns.REMIND_TIME+ " INTEGER ); ";
         db.execSQL(create);
 
     }
@@ -38,5 +38,10 @@ public class DEventDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ Columns.TABLE_NAME);
         onCreate(db);
+    }
+
+    public void add(DEvent event) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(Columns.TABLE_NAME,null,event.getContentValues());
     }
 }

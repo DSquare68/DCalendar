@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daniel.dcalendar.R;
-import com.daniel.dcalendar.logic.TopBarLogic;
+import com.daniel.dcalendar.logic.view.TopBarLogic;
 
 import java.util.Date;
 
