@@ -3,4 +3,5 @@
     <dimen name="arrow_height">62dp</dimen>
     <dimen name="side_padding_dday">4dp</dimen>
     <dimen name="top_and_bottom_padding_dday">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
