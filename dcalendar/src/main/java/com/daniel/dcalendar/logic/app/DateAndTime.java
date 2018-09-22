@@ -5,7 +5,7 @@ import java.util.Date;
 public class DateAndTime {
 
     public static Date toDate(String date, String time){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         return  sdf.parse(date+" "+time,null);
     }
 

@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.R;
 import com.daniel.dcalendar.logic.view.DDayLogic;
+import com.daniel.dcalendar.logic.view.DEventAddingLogic;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {
@@ -18,7 +19,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     private boolean setDefault;
     private boolean isEvent;
 
-    public DDay(Context context,int dayNumber, boolean setDefault, boolean isEvent) {
+    public DDay(Context context, final int dayNumber, boolean setDefault, boolean isEvent) {
         super(context);
         setText(String.valueOf(dayNumber));
         this.isEvent=isEvent;

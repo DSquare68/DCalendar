@@ -3,7 +3,7 @@ package com.daniel.dcalendar.event;
 import android.provider.BaseColumns;
 
 public interface Columns extends BaseColumns {
-    String DATA_BASE_NAME = "drug.db";
+    String DATA_BASE_NAME = "dcalendar.db";
     int DATA_BASE_VERSION = 1;
 
     String TABLE_NAME="event";
