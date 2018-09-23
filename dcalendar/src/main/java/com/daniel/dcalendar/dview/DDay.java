@@ -43,17 +43,8 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
                 setBackgroundResource(R.drawable.calendar_week_day_button_unpressed);
             }
         }
-
-        setOnLongClickListener(new OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Global.yearDEvent=year;
-                Global.monthDEvent=month;
-                Global.dayDEvent=day;
-                DDayLogic.openDialog(getContext());
-                return false;
-            }
-        });
+        setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
+        setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }
     public DDay(Context context, AttributeSet attrs) {
         super(context, attrs);

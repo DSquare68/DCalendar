@@ -1,6 +1,10 @@
 package com.daniel.dcalendar.logic.view;
 
+import android.content.Context;
+
 import com.daniel.dcalendar.data.Global;
+import com.daniel.dcalendar.event.DEventDatabase;
+import java.util.Date;
 
 public class DWeekLogic {
 
@@ -37,5 +41,10 @@ public class DWeekLogic {
             }
         }
         return Global.month;
+    }
+
+    public static boolean isEvent(int year, int month, int day, Context context) {
+        DEventDatabase ed = new DEventDatabase(context);
+        return ed.isEvent((new Date(year,month,day)).getTime());
     }
 }

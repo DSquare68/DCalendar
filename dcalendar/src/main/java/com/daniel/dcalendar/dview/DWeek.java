@@ -18,7 +18,7 @@ public class DWeek extends LinearLayout {
         this.weekN=weekNumber;
         setWeightSum(7);
         for(int i=0;i<NUMBER_OF_DAYS;i++){
-            addView(new DDay(context,DWeekLogic.setYearToDDay(daysNumber,i, weekNumber), DWeekLogic.setMonthToDDay(daysNumber,i,weekNumber), daysNumber[i], true,true));
+            addView(new DDay(context,DWeekLogic.setYearToDDay(daysNumber,i, weekNumber), DWeekLogic.setMonthToDDay(daysNumber,i,weekNumber), daysNumber[i], true,DWeekLogic.isEvent(Global.year,Global.month,daysNumber[i],getContext())));
             dDays[i]=(DDay) getChildAt(i);
         }
     }

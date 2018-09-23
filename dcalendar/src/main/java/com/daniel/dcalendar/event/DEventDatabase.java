@@ -1,9 +1,11 @@
 package com.daniel.dcalendar.event;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Date;
 
 
 public class DEventDatabase extends SQLiteOpenHelper {
@@ -43,5 +45,40 @@ public class DEventDatabase extends SQLiteOpenHelper {
     public void add(DEvent event) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(Columns.TABLE_NAME,null,event.getContentValues());
+    }
+    public DEvent[] get(Date date){
+        SQLiteDatabase db = getReadableDatabase();
+        DEvent[] result = null;
+        int[] ids  = getIDs(date.getTime(),db);
+        String inClause = ids.toString();
+        inClause = inClause.replace("[","(");
+        inClause = inClause.replace("]",")");
+        Cursor c = db.rawQuery("select * from table_name where id in " + inClause,null);
+        c.moveToFirst();
+        result = new DEvent[c.getCount()];
+        for(int i=0;c.isAfterLast();i++,c.moveToNext()){
+            result[i]= new DEvent(c.getString(1),c.getString(2),c.getString(3),c.getInt(4),c.getInt(5),c.getInt(6));
+        }
+        return result;
+    }
+
+    public int[] getIDs(long time, SQLiteDatabase db){
+        int[] result =null;
+        Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_TIME+" AND "+time+" <= "+Columns.END_TIME,null);
+        c.moveToFirst();
+        if(c.getCount()<=0) return result;
+        result = new int[c.getCount()];
+        for(int i=0;c.isAfterLast();i++,c.moveToNext()){
+            result[i]=c.getInt(0);
+        }
+        return result;
+    }
+
+    public boolean isEvent(long time) {
+        if(getIDs(time,getReadableDatabase())==null){
+            return false;
+        } else {
+            return true;
+        }
     }
 }
