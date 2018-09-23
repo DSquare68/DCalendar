@@ -61,7 +61,24 @@ public class DEventAddingLogic {
 
     public static void addEvent(Context context) {
         DEventDatabase edb = new DEventDatabase(context);
-        DEvent event = new DEvent(DEventAdding.name.getText().toString(),DEventAdding.localization.getText().toString(),DEventAdding.description.getText().toString(), DateAndTime.toLong(DEventAdding.startDateButton.getText().toString(),DEventAdding.startTime.getText().toString()),DateAndTime.toLong(DEventAdding.endDateButton.getText().toString(),DEventAdding.endTime.getText().toString()),0);
+        String name = DEventAdding.name.getText().toString();
+        name = name=="" ? "" /*TODO empty name*/ : name;
+        String localization=DEventAdding.localization.getText().toString();
+        localization = localization=="" ? "" : localization;
+        String description= DEventAdding.description.getText().toString();
+        description = description=="" ? "" :description;
+        String date =DEventAdding.startDateButton.getText().toString();
+        date = date=="" ? DEventAdding.startDateButton.getHint().toString() : date;
+        String time =DEventAdding.startTime.getText().toString();
+        time = time=="" ? DEventAdding.startTime.getHint().toString(): time;
+        long start=DateAndTime.toLong(date,time);
+        date =DEventAdding.endDateButton.getText().toString();
+        date = date=="" ? DEventAdding.endDateButton.getHint().toString() : date;
+        time =DEventAdding.endTime.getText().toString();
+        time = time=="" ? DEventAdding.endTime.getHint().toString() : time;
+        long end=DateAndTime.toLong(date,time);
+        long reminder=0; //TODO reminder set time
+        DEvent event = new DEvent(name,localization,description, start,end,reminder);
         edb.add(event);
     }
 
