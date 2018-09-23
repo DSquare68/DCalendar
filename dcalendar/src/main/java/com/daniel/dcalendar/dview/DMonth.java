@@ -15,7 +15,7 @@ public class DMonth extends LinearLayout {
         super(context);
         setOrientation(VERTICAL);
         for(int i=0;i<NUMBER_OF_WEEKS;i++){
-            addView(new DWeek(context, DMonthLogic.setWeekDays(i)));
+            addView(new DWeek(context, DMonthLogic.setWeekDays(i),i));
             dWeeks[i] =(DWeek) getChildAt(i);
         }
 

@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.R;
+import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.DDayLogic;
-import com.daniel.dcalendar.logic.view.DEventAddingLogic;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {
@@ -18,12 +18,18 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
      */
     private boolean setDefault;
     private boolean isEvent;
+    private int year;
+    private int month;
+    private int day;
 
-    public DDay(Context context, final int dayNumber, boolean setDefault, boolean isEvent) {
+    public DDay(Context context, int yearD, int monthD, int dayNumber, boolean setDefault, boolean isEvent) {
         super(context);
         setText(String.valueOf(dayNumber));
         this.isEvent=isEvent;
         this.setDefault=setDefault;
+        this.year=yearD;
+        this.month=monthD;
+        this.day=dayNumber;
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.weight=1;
@@ -41,6 +47,9 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                Global.yearDEvent=year;
+                Global.monthDEvent=month;
+                Global.dayDEvent=day;
                 DDayLogic.openDialog(getContext());
                 return false;
             }
@@ -54,5 +63,29 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     protected void onMeasure(int width, int height) {
         super.onMeasure(width, height);
         this.setMeasuredDimension(width, width);
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 }

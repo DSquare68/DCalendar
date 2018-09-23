@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.daniel.dcalendar.R;
+import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.DEventAddingLogic;
 
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ public class DEventAdding extends AppCompatActivity {
         setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.toolbar));
         findViews();
         setListeners();
-        //setHints();
+        setHints();
     }
 
     private void setListeners() {
@@ -59,10 +60,9 @@ public class DEventAdding extends AppCompatActivity {
     }
 
     private void setHints() {
-        // TODO this works if adding to present day.
         SimpleDateFormat sDate = new SimpleDateFormat("dd.MM.yyyy");
         SimpleDateFormat time = new SimpleDateFormat("HH:00");
-        Date date = new Date();
+        Date date = new Date(Global.yearDEvent,Global.monthDEvent,Global.dayDEvent,(new Date()).getHours(),0);
 
         startDateButton.setHint(sDate.format(date));
         endDateButton.setHint(sDate.format(date));

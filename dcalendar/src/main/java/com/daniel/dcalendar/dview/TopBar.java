@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daniel.dcalendar.R;
+import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.TopBarLogic;
 
 import java.util.Date;
@@ -53,6 +54,8 @@ public class TopBar extends LinearLayout {
         addView(rightArrow,lpR);
 
         TopBarLogic.setListener(getContext(),leftArrow,rightArrow);
+        Global.year=(new Date()).getYear();
+        Global.month=(new Date()).getMonth();
     }
 
     public TopBar(Context context, @Nullable AttributeSet attrs) {

@@ -2,9 +2,9 @@ package com.daniel.dcalendar.logic.view;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
+import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.dview.DMonth;
 import com.daniel.dcalendar.dview.TopBar;
 
@@ -29,6 +29,8 @@ public class TopBarLogic {
                 } else {
                     whichMonth--;
                 }
+                Global.month=whichMonth;
+                Global.year=today[0].getYear();
                 TopBar.setMonthText(today[0].getMonth(),today[0].getYear());
                 DMonth.renameDays(today[0].getYear(),whichMonth);
             }
@@ -44,6 +46,8 @@ public class TopBarLogic {
                 } else{
                     whichMonth++;
                 }
+                Global.month=whichMonth;
+                Global.year=today[0].getYear();
                 TopBar.setMonthText(today[0].getMonth(),today[0].getYear());
                 DMonth.renameDays(today[0].getYear(),whichMonth);
             }
