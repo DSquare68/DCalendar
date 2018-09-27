@@ -17,6 +17,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
      * default customize of button - from xml file
      */
     private boolean setDefault;
+    private boolean shadowText;
     private boolean isEvent;
     private int year;
     private int month;
@@ -30,6 +31,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         this.year=yearD;
         this.month=monthD;
         this.day=dayNumber;
+        if(month==Global.month) shadowText=false; else shadowText=true;
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.weight=1;
@@ -43,6 +45,11 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
                 setBackgroundResource(R.drawable.calendar_week_day_button_unpressed);
             }
         }
+
+        if(shadowText){
+            this.setTextColor(getResources().getColor(R.color.text_shadow));
+        }
+
         setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
         setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }

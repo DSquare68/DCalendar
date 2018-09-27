@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.dview.DMonth;
+import com.daniel.dcalendar.dview.DWeekNames;
 import com.daniel.dcalendar.dview.TopBar;
 
 
@@ -18,6 +19,7 @@ public class DCalendar extends LinearLayout {
         super(context);
         setOrientation(VERTICAL);
         addView(new TopBar(getContext()), new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int) getResources().getDimension(R.dimen.arrow_height)));
+        addView(new DWeekNames(getContext()));
         addView( new DMonth(getContext()));
     }
 

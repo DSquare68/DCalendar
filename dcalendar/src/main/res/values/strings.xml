@@ -33,4 +33,13 @@
     <string name="title_activity_devent_adding">DEventAdding</string>
     <string name="add">Add</string>
     <string name="city">City</string>
+    <string-array name="day_names">
+        <item>M</item>
+        <item>Tu</item>
+        <item>W</item>
+        <item>Th</item>
+        <item>F</item>
+        <item>Sa</item>
+        <item>Su</item>
+    </string-array>
 </resources>
