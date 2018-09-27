@@ -49,26 +49,36 @@ public class DEventDatabase extends SQLiteOpenHelper {
     public DEvent[] get(Date date){
         SQLiteDatabase db = getReadableDatabase();
         DEvent[] result = null;
-        int[] ids  = getIDs(date.getTime(),db);
-        String inClause = ids.toString();
-        inClause = inClause.replace("[","(");
-        inClause = inClause.replace("]",")");
-        Cursor c = db.rawQuery("select * from table_name where id in " + inClause,null);
+        int[] ids  = getIDs(1536940000000L,db);
+        if(ids==null) return result;
+        String inClause = arrayToString(ids);
+        Cursor c = db.rawQuery("select * from "+Columns.TABLE_NAME+" where "+Columns._ID+" in " + inClause,null);
         c.moveToFirst();
         result = new DEvent[c.getCount()];
-        for(int i=0;c.isAfterLast();i++,c.moveToNext()){
+        for(int i=0;i<c.getCount();i++,c.moveToNext()){
             result[i]= new DEvent(c.getString(1),c.getString(2),c.getString(3),c.getInt(4),c.getInt(5),c.getInt(6));
         }
+        return result;
+    }
+
+    private String arrayToString(int[] ids) {
+        String result ="(";
+        for (int i:
+             ids) {
+            result+=i+", ";
+        }
+        result=result.substring(0,result.length()-2);
+        result+=")";
         return result;
     }
 
     public int[] getIDs(long time, SQLiteDatabase db){
         int[] result =null;
         Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_TIME+" AND "+time+" <= "+Columns.END_TIME,null);
-        c.moveToFirst();
         if(c.getCount()<=0) return result;
         result = new int[c.getCount()];
-        for(int i=0;c.isAfterLast();i++,c.moveToNext()){
+        c.moveToFirst();
+        for(int i=0;i<c.getCount();i++,c.moveToNext()){
             result[i]=c.getInt(0);
         }
         return result;

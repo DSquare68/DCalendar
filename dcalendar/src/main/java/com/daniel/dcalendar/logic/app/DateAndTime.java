@@ -21,4 +21,9 @@ public class DateAndTime {
     public static long toLong(String date, String time){
         return  toDate(date,time).getTime();
     }
+
+    public static String toString(long startTime) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(new Date(startTime));
+    }
 }
