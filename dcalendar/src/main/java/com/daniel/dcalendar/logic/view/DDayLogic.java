@@ -40,4 +40,8 @@ public class DDayLogic {
             }
         };
     }
+    public static boolean isEvent(int year, int month, int day, Context context) {
+        DEventDatabase ed = new DEventDatabase(context);
+        return ed.isEvent((new Date(year,month,day)).getTime());
+    }
 }

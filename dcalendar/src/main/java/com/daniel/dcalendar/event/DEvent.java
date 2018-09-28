@@ -2,19 +2,17 @@ package com.daniel.dcalendar.event;
 
 import android.content.ContentValues;
 
-import com.daniel.dcalendar.logic.app.DateAndTime;
-
 public class DEvent implements  Columns{
-    String name,location,desctiption;
+    String name,location, description;
     long startTime,endTime,remindTime;
 
     public DEvent() {
     }
 
-    public DEvent(String name, String location, String desctiption, long startTime, long endTime, long remindTime) {
+    public DEvent(String name, String location, String description, long startTime, long endTime, long remindTime) {
         this.name = name;
         this.location = location;
-        this.desctiption = desctiption;
+        this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
         this.remindTime = remindTime;
@@ -36,12 +34,12 @@ public class DEvent implements  Columns{
         this.location = location;
     }
 
-    public String getDesctiption() {
-        return desctiption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesctiption(String desctiption) {
-        this.desctiption = desctiption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public long getStartTime() {
@@ -74,7 +72,7 @@ public class DEvent implements  Columns{
         cv.put(START_TIME, startTime);
         cv.put(END_TIME,endTime);
         cv.put(LOCATION,location);
-        cv.put(DESCRIPTION,desctiption);
+        cv.put(DESCRIPTION, description);
         cv.put(REMIND_TIME,remindTime);
         return  cv;
     }

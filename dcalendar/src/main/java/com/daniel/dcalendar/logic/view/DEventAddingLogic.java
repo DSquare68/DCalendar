@@ -10,6 +10,7 @@ import android.widget.TimePicker;
 
 import com.daniel.dcalendar.dview.DEventAdding;
 import com.daniel.dcalendar.event.DEvent;
+import com.daniel.dcalendar.event.DEventDB;
 import com.daniel.dcalendar.event.DEventDatabase;
 import com.daniel.dcalendar.logic.app.DateAndTime;
 
@@ -29,7 +30,7 @@ public class DEventAddingLogic {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePicker = new DatePickerDialog(context, setListener(start),today.getYear()+1900,today.getMonth()+1,today.getDate());
+                        DatePickerDialog datePicker = new DatePickerDialog(context, setListener(start),today.getYear()+1900,today.getMonth(),today.getDate());
                 datePicker.show();
             }
         };
@@ -40,19 +41,19 @@ public class DEventAddingLogic {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 if(start){
                     copyDate = startDate;
-                    startDate= new Date(year-1900,month-1,dayOfMonth);
+                    startDate= new Date(year-1900,month,dayOfMonth);
                     if(startDate.after(endDate)){
                         startDate=copyDate;
                     } else {
-                        DEventAdding.startDateButton.setText(dayOfMonth + "." + month + "." + year);
+                        DEventAdding.startDateButton.setText(dayOfMonth + "." + (month+1) + "." + year);
                     }
                 } else {
                     copyDate=startDate;
-                    endDate= new Date(year-1900,month-1,dayOfMonth);
+                    endDate= new Date(year-1900,month,dayOfMonth);
                     if (endDate.before(startDate)){
                         endDate=copyDate;
                     } else {
-                        DEventAdding.endDateButton.setText(dayOfMonth + "." + month + "." + year);
+                        DEventAdding.endDateButton.setText(dayOfMonth + "." + (month+1) + "." + year);
                     }
                 }
             }
@@ -60,6 +61,7 @@ public class DEventAddingLogic {
     }
 
     public static void addEvent(Context context) {
+        //TODO divide to smaller functions
         DEventDatabase edb = new DEventDatabase(context);
         String name = DEventAdding.name.getText().toString();
         name = name=="" ? "" /*TODO empty name*/ : name;
@@ -72,13 +74,16 @@ public class DEventAddingLogic {
         String time =DEventAdding.startTime.getText().toString();
         time = time=="" ? DEventAdding.startTime.getHint().toString(): time;
         long start=DateAndTime.toLong(date,time);
+        long startDate = DateAndTime.toLong(date,null);
         date =DEventAdding.endDateButton.getText().toString();
         date = date=="" ? DEventAdding.endDateButton.getHint().toString() : date;
         time =DEventAdding.endTime.getText().toString();
         time = time=="" ? DEventAdding.endTime.getHint().toString() : time;
         long end=DateAndTime.toLong(date,time);
+        long endDate=DateAndTime.toLong(date,null);
         long reminder=0; //TODO reminder set time
-        DEvent event = new DEvent(name,localization,description, start,end,reminder);
+
+        DEventDB event = new DEventDB(name,localization,description, start,end,reminder,startDate,endDate);
         edb.add(event);
     }
 

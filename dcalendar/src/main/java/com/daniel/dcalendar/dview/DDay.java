@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.daniel.dcalendar.R;
 import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.DDayLogic;
+import com.daniel.dcalendar.logic.view.DWeekLogic;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {
@@ -23,14 +24,14 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     private int month;
     private int day;
 
-    public DDay(Context context, int yearD, int monthD, int dayNumber, boolean setDefault, boolean isEvent) {
+    public DDay(Context context, int yearD, int monthD, int dayNumber, boolean setDefault) {
         super(context);
         setText(String.valueOf(dayNumber));
-        this.isEvent=isEvent;
         this.setDefault=setDefault;
         this.year=yearD;
         this.month=monthD;
         this.day=dayNumber;
+        this.isEvent=DDayLogic.isEvent(year,month,day,getContext());
         if(month==Global.month) shadowText=false; else shadowText=true;
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

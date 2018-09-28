@@ -29,6 +29,8 @@ public class DEventDatabase extends SQLiteOpenHelper {
                 Columns.EVENT_NAME + " TEXT, "+
                 Columns.START_TIME + " INTEGER, "+
                 Columns.END_TIME + " INTEGER, "+
+                Columns.START_DATE + " INTEGER, "+
+                Columns.END_DATE + " INTEGER, "+
                 Columns.LOCATION + " TEXT, "+
                 Columns.DESCRIPTION+ " TEXT, "+
                 Columns.REMIND_TIME+ " INTEGER ); ";
@@ -42,17 +44,17 @@ public class DEventDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void add(DEvent event) {
+    public void add(DEventDB event) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(Columns.TABLE_NAME,null,event.getContentValues());
     }
     public DEvent[] get(Date date){
         SQLiteDatabase db = getReadableDatabase();
         DEvent[] result = null;
-        int[] ids  = getIDs(1536940000000L,db);
+        int[] ids  = getIDs(date.getTime(),db);
         if(ids==null) return result;
         String inClause = arrayToString(ids);
-        Cursor c = db.rawQuery("select * from "+Columns.TABLE_NAME+" where "+Columns._ID+" in " + inClause,null);
+        Cursor c = db.rawQuery("select "+Columns.D_EVENT+" from "+Columns.TABLE_NAME+" where "+Columns._ID+" in " + inClause,null);
         c.moveToFirst();
         result = new DEvent[c.getCount()];
         for(int i=0;i<c.getCount();i++,c.moveToNext()){
@@ -74,7 +76,7 @@ public class DEventDatabase extends SQLiteOpenHelper {
 
     public int[] getIDs(long time, SQLiteDatabase db){
         int[] result =null;
-        Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_TIME+" AND "+time+" <= "+Columns.END_TIME,null);
+        Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_DATE+" AND "+time+" <= "+Columns.END_DATE,null);
         if(c.getCount()<=0) return result;
         result = new int[c.getCount()];
         c.moveToFirst();
