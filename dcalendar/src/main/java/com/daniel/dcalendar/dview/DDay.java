@@ -2,6 +2,7 @@ package com.daniel.dcalendar.dview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -10,6 +11,7 @@ import com.daniel.dcalendar.R;
 import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.DDayLogic;
 import com.daniel.dcalendar.logic.view.DWeekLogic;
+import java.util.Date;
 
 
 public class DDay extends android.support.v7.widget.AppCompatButton {
@@ -33,12 +35,20 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         this.day=dayNumber;
         this.isEvent=DDayLogic.isEvent(year,month,day,getContext());
         if(month==Global.month) shadowText=false; else shadowText=true;
-
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.weight=1;
         lp.setMargins((int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday));
         setLayoutParams(lp);
 
+        setDesign();
+
+        setShadow();
+
+        setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
+        setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
+    }
+
+    private void setDesign() {
         if(this.setDefault){
             if(this.isEvent ==true){
                 setBackgroundResource(R.drawable.calendar_week_day_button_pressed);
@@ -46,14 +56,8 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
                 setBackgroundResource(R.drawable.calendar_week_day_button_unpressed);
             }
         }
-
-        if(shadowText){
-            this.setTextColor(getResources().getColor(R.color.text_shadow));
-        }
-
-        setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
-        setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }
+
     public DDay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -93,6 +97,25 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     }
 
     public void setToday() {
-        setBackgroundResource(R.drawable.calendar_week_day_today);
+        if(checkToday())
+            setBackgroundResource(R.drawable.calendar_week_day_today);
+        else
+            setDesign();
+
+    }
+
+    public boolean checkToday(){
+        return new Date().getYear()==this.year&&new Date().getMonth()==this.month&&new Date().getDate()==this.day;
+    }
+
+    public void updateShadow(){
+        if(month==Global.month) shadowText=false; else shadowText=true;
+
+    }
+    public void setShadow() {
+        if(shadowText)
+            this.setTextColor(getResources().getColor(R.color.text_shadow));
+        else
+            this.setTextColor(getResources().getColor(R.color.black));
     }
 }
