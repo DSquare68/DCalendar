@@ -11,6 +11,7 @@ import com.daniel.dcalendar.dview.DEventsScroll;
 import com.daniel.dcalendar.dview.DMonth;
 import com.daniel.dcalendar.dview.DWeekNames;
 import com.daniel.dcalendar.dview.TopBar;
+import com.daniel.dcalendar.logic.view.DCalendarLogic;
 
 
 public class DCalendar extends LinearLayout {
@@ -24,6 +25,7 @@ public class DCalendar extends LinearLayout {
         addView(new DWeekNames(getContext()));
         addView(new DMonth(getContext()));
         addView(new DEventsScroll(getContext()));
+        DCalendarLogic.setToday(this);
     }
 
     public DCalendar(Context context, @Nullable AttributeSet attrs) {

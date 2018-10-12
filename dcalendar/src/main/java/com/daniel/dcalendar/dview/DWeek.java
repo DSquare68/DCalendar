@@ -35,4 +35,13 @@ public class DWeek extends LinearLayout {
             dDays[i].setDay(daysNumber[i]);
         }
     }
+    public DDay getDay(int year, int month, int day){
+        for (DDay d :
+                dDays){
+            if(d.dateCorrect(year,month,day))
+                return d;
+        }
+        return null;
+
+    }
 }

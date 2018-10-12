@@ -87,4 +87,12 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     public void setDay(int day) {
         this.day = day;
     }
+
+    public boolean dateCorrect(int year, int month, int day) {
+        if(this.year==year&&this.month==month&&this.day==day) return true; else return false;
+    }
+
+    public void setToday() {
+        setBackgroundResource(R.drawable.calendar_week_day_today);
+    }
 }

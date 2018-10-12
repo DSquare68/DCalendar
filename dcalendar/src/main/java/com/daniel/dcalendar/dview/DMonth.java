@@ -30,4 +30,12 @@ public class DMonth extends LinearLayout {
             dWeeks[i].renameDays(DMonthLogic.setWeekDays(year,whichMonth,i));
         }
     }
+
+    public DDay getDay(int year, int month, int date) {
+        for(DWeek w :
+                dWeeks){
+            if(w.getDay(year, month, date)!=null) return w.getDay(year,month,date);
+        }
+        return null;
+    }
 }
