@@ -3,6 +3,7 @@ package com.daniel.dcalendar.dview;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.data.Global;
@@ -33,7 +34,6 @@ public class DWeek extends LinearLayout {
             dDays[i].setMonth(DWeekLogic.setMonthToDDay(daysNumber,i,weekN));
             dDays[i].setYear(DWeekLogic.setYearToDDay(daysNumber,i,weekN));
             dDays[i].setDay(daysNumber[i]);
-            dDays[i].setToday(); //maybe not to all
             dDays[i].updateShadow();
             dDays[i].setShadow();
         }

@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 
 import com.daniel.dcalendar.logic.view.DMonthLogic;
 
+import java.util.Date;
+
 public class DMonth extends LinearLayout {
 
     private final static int NUMBER_OF_WEEKS=6;
@@ -31,11 +33,27 @@ public class DMonth extends LinearLayout {
         }
     }
 
-    public DDay getDay(int year, int month, int date) {
+    public static void refreshEvents() {
+        for(DWeek w :
+                dWeeks){
+            for (DDay d :
+                    w.dDays){
+                d.refreshEvent();
+            }
+        }
+    }
+
+    public static DDay getDay(int year, int month, int date) {
         for(DWeek w :
                 dWeeks){
             if(w.getDay(year, month, date)!=null) return w.getDay(year,month,date);
         }
         return null;
+    }
+
+    public static void setToday() {
+        DDay today = getDay(new Date().getYear(),new Date().getMonth(), new Date().getDate());
+        if(today!=null)
+            today.setToday();
     }
 }

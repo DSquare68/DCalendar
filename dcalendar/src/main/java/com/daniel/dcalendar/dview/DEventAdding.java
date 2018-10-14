@@ -39,8 +39,8 @@ public class DEventAdding extends AppCompatActivity {
         startDateButton.setOnClickListener(DEventAddingLogic.setOnClickListener(true,this));
         endDateButton.setOnClickListener(DEventAddingLogic.setOnClickListener(false,this));
 
-        startTime.setOnClickListener(DEventAddingLogic.setOnClickListenerTime(true,this));
-        endTime.setOnClickListener(DEventAddingLogic.setOnClickListenerTime(false,this));
+        startTime.setOnClickListener(DEventAddingLogic.setOnClickListenerTime(true,this,new Date(Global.yearDEvent,Global.monthDEvent,Global.dayDEvent,(new Date()).getHours(),0)));
+        endTime.setOnClickListener(DEventAddingLogic.setOnClickListenerTime(false,this,new Date(Global.yearDEvent,Global.monthDEvent,Global.dayDEvent,(new Date()).getHours(),0)));
     }
 
     private void findViews() {

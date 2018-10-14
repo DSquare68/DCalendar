@@ -118,4 +118,9 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         else
             this.setTextColor(getResources().getColor(R.color.black));
     }
+
+    public void refreshEvent() {
+        isEvent=DDayLogic.isEvent(year,month,day,getContext());
+        setDesign();
+    }
 }
