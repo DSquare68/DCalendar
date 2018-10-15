@@ -2,4 +2,5 @@
 <resources>
     <color name="text_shadow">#6a6357</color>
     <color name="black">#000000</color>
+    <color name="blue">#1945d4</color>
 </resources>
