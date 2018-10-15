@@ -58,7 +58,7 @@ public class DEventDatabase extends SQLiteOpenHelper {
         c.moveToFirst();
         result = new DEvent[c.getCount()];
         for(int i=0;i<c.getCount();i++,c.moveToNext()){
-            result[i]= new DEvent(c.getString(1),c.getString(2),c.getString(3),c.getInt(4),c.getInt(5),c.getInt(6));
+            result[i]= new DEvent(c.getString(0),c.getString(1),c.getString(2),c.getLong(3),c.getLong(4),c.getLong(5));
         }
         return result;
     }

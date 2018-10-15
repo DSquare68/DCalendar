@@ -7,7 +7,6 @@ import android.view.View;
 import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.dview.DEventAdding;
 import com.daniel.dcalendar.dview.DEventsScroll;
-import com.daniel.dcalendar.event.DEvent;
 import com.daniel.dcalendar.event.DEventDatabase;
 import java.util.Date;
 
@@ -30,13 +29,13 @@ public class DDayLogic {
         };
     }
 
-    public static View.OnClickListener setOnClickClickListener(int year, int month, int day, final Context context) {
+    public static View.OnClickListener setOnClickClickListener(final int year,final int month,final int day, final Context context) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DEventDatabase ed = new DEventDatabase(context);
-                DEventsScroll.setEvents(ed.get(new Date(Global.year,Global.month,Global.day,0,0,0)));
-                DEventsScroll.refrashEvents(context);
+                DEventsScroll.setEvents(ed.get(new Date(year,month,day,0,0,0)));
+                DEventsScroll.refreshEvents(context);
             }
         };
     }

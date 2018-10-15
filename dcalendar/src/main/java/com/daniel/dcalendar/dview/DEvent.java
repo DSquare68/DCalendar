@@ -5,37 +5,26 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.daniel.dcalendar.R;
 import com.daniel.dcalendar.logic.app.DateAndTime;
 
 public class DEvent extends LinearLayout {
 
+    TextView startTime,endTime, name, location;
+
     public DEvent(Context context, com.daniel.dcalendar.event.DEvent dEvent) {
         super(context);
         this.setOrientation(HORIZONTAL);
-        LinearLayout time = new LinearLayout(getContext());
-        time.setOrientation(LinearLayout.VERTICAL);
+        inflate(context, R.layout.content_single_devent,this);
 
-        TextView startTime = new TextView(getContext());
+        startTime =findViewById(R.id.start_time);
+        endTime =findViewById(R.id.end_time);
+        name=findViewById(R.id.name_of_event);
+        location=findViewById(R.id.location_of_event);
+
         startTime.setText(DateAndTime.toString(dEvent.getStartTime()));
-
-        TextView endTime = new TextView(getContext());
-        endTime.setText(DateAndTime.toString(dEvent.getStartTime()));
-
-        time.addView(startTime);
-        time.addView(endTime);
-        this.addView(time);
-
-        LinearLayout details = new LinearLayout(getContext());
-        details.setOrientation(LinearLayout.VERTICAL);
-
-        TextView name = new TextView(getContext());
+        endTime.setText(DateAndTime.toString(dEvent.getEndTime()));
         name.setText(dEvent.getName());
-
-        TextView location = new TextView(getContext());
         location.setText(dEvent.getLocation());
-
-        details.addView(name);
-        details.addView(location);
-        this.addView(details);
     }
 }

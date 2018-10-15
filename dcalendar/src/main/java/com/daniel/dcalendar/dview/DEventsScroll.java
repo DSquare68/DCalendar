@@ -3,9 +3,6 @@ package com.daniel.dcalendar.dview;
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
-
-import com.daniel.dcalendar.logic.view.DEventScrollLogic;
 
 public class DEventsScroll extends ScrollView {
     static com.daniel.dcalendar.event.DEvent[] events;
@@ -14,10 +11,9 @@ public class DEventsScroll extends ScrollView {
     public DEventsScroll(Context context) {
         super(context);
         container=new LinearLayout(getContext());
+        container.setOrientation(LinearLayout.VERTICAL);
         this.addView(container);
-        setEvents(events);
-        refrashEvents(getContext());
-
+        refreshEvents(getContext());
     }
 
 
@@ -29,7 +25,7 @@ public class DEventsScroll extends ScrollView {
     public static com.daniel.dcalendar.event.DEvent[] getEvents() {
         return events;
     }
-    public static void refrashEvents(Context context){
+    public static void refreshEvents(Context context){
         if(events==null) return;
         for(int i=0;i<events.length;i++){
             container.addView( new DEvent(context,events[i]));

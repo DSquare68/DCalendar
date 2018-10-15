@@ -17,20 +17,20 @@ public interface Columns extends BaseColumns {
     String EVENT_NAME="event_name";
 
     /**
-     * time submitted by user
+     * time submitted by user has date and time of event
      */
 
     String START_TIME="start_time";
     /**
-     * time submitted by user
+     * time submitted by user has date and time of event
      */
     String END_TIME="end_time";
     /**
-     * time filled programmatically for faster event finding
+     * time filled programmatically for faster event finding, by date.
      */
     String START_DATE="start_date";
     /**
-     * time filled programmatically for faster event finding
+     * time filled programmatically for faster event finding, by date.
      */
     String END_DATE="end_date";
     String LOCATION="location";
@@ -38,5 +38,5 @@ public interface Columns extends BaseColumns {
     String REMIND_TIME="remind_time";
 
 
-    String D_EVENT=EVENT_NAME+", "+START_TIME+", "+END_TIME+", "+LOCATION+", "+DESCRIPTION+", "+REMIND_TIME;
+    String D_EVENT=EVENT_NAME+", "+LOCATION+", "+DESCRIPTION+", "+START_TIME+", "+END_TIME+", "+REMIND_TIME;
 }
