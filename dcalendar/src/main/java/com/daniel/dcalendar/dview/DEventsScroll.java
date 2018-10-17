@@ -28,7 +28,7 @@ public class DEventsScroll extends ScrollView {
     public static void refreshEvents(Context context){
         if(events==null) return;
         for(int i=0;i<events.length;i++){
-            container.addView( new DEvent(context,events[i]));
+            container.addView( new DEventInScroll(context,events[i]));
         }
     }
 

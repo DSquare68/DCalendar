@@ -4,4 +4,8 @@
     <dimen name="side_padding_dday">4dp</dimen>
     <dimen name="top_and_bottom_padding_dday">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="devent_time_text_size">40sp</dimen>
+    <dimen name="devent_details_text_size">35sp</dimen>
+    <dimen name="time_icon_devent">50dp</dimen>
+    <dimen name="details_icon_devent">40dp</dimen>
 </resources>

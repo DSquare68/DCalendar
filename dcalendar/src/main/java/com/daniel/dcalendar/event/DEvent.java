@@ -3,12 +3,21 @@ package com.daniel.dcalendar.event;
 import android.content.ContentValues;
 
 public class DEvent implements  Columns{
+    int id;
     String name,location, description;
     long startTime,endTime,remindTime;
 
     public DEvent() {
     }
-
+    public DEvent(int id, String name, String location, String description, long startTime, long endTime, long remindTime) {
+        this.id=id;
+        this.name = name;
+        this.location = location;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.remindTime = remindTime;
+    }
     public DEvent(String name, String location, String description, long startTime, long endTime, long remindTime) {
         this.name = name;
         this.location = location;
@@ -16,6 +25,14 @@ public class DEvent implements  Columns{
         this.startTime = startTime;
         this.endTime = endTime;
         this.remindTime = remindTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
