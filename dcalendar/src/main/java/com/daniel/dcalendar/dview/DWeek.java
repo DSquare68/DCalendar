@@ -35,6 +35,7 @@ public class DWeek extends LinearLayout {
             dDays[i].setYear(DWeekLogic.setYearToDDay(daysNumber,i,weekN));
             dDays[i].setDay(daysNumber[i]);
             dDays[i].updateShadow();
+            dDays[i].setListeners();
             dDays[i].setShadow();
         }
     }

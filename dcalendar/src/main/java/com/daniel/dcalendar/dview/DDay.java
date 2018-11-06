@@ -44,6 +44,10 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
 
         setShadow();
 
+        setListeners();
+    }
+
+    public void setListeners() {
         setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
         setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }

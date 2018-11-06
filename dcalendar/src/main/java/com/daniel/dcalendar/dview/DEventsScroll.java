@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.daniel.dcalendar.event.DEvent;
+
 public class DEventsScroll extends ScrollView {
     static com.daniel.dcalendar.event.DEvent[] events;
 
@@ -26,10 +28,26 @@ public class DEventsScroll extends ScrollView {
         return events;
     }
     public static void refreshEvents(Context context){
+        container.removeAllViews();
         if(events==null) return;
+        sort(events);
         for(int i=0;i<events.length;i++){
             container.addView( new DEventInScroll(context,events[i]));
         }
     }
 
+    private static void sort(DEvent[] events) {
+        int j;
+        DEvent key;
+
+        for (int i=1;i<events.length;i++){
+            j=i;
+            key=events[i];
+            while (j>0 && events[j-1].getStartTime()>key.getStartTime()){
+                events[j]=events[j-1];
+                j--;
+            }
+            events[j]=key;
+        }
+    }
 }
