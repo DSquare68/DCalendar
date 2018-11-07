@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.View;
 
 import com.daniel.dcalendar.data.Global;
+import com.daniel.dcalendar.dview.DDay;
 import com.daniel.dcalendar.dview.DEventAdding;
 import com.daniel.dcalendar.dview.DEventsScroll;
 import com.daniel.dcalendar.event.DEventDatabase;
 import java.util.Date;
 
 public class DDayLogic {
+    private static DDay previousDDaySelected;
     public static void openDialog(Context context) {
         Intent intent = new Intent(context, DEventAdding.class);
         context.startActivity(intent);
@@ -29,13 +31,16 @@ public class DDayLogic {
         };
     }
 
-    public static View.OnClickListener setOnClickClickListener(final int year,final int month,final int day, final Context context) {
+    public static View.OnClickListener setOnClickClickListener(final int year,final int month,final int day, final DDay dDay) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DEventDatabase ed = new DEventDatabase(context);
+                DEventDatabase ed = new DEventDatabase(dDay.getContext());
                 DEventsScroll.setEvents(ed.get(new Date(year,month,day,0,0,0)));
-                DEventsScroll.refreshEvents(context);
+                DEventsScroll.refreshEvents(dDay.getContext());
+                dDay.setSelected(true);
+                if(previousDDaySelected!=null) previousDDaySelected.setSelected(false);
+                previousDDaySelected=dDay;
             }
         };
     }

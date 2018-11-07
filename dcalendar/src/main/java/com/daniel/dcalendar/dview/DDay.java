@@ -39,6 +39,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         lp.weight=1;
         lp.setMargins((int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday));
         setLayoutParams(lp);
+        setSelected(false);
 
         setDesign();
 
@@ -48,7 +49,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
     }
 
     public void setListeners() {
-        setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,getContext()));
+        setOnClickListener(DDayLogic.setOnClickClickListener(year,month,day,this));
         setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }
 
