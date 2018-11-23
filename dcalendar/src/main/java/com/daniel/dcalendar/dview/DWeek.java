@@ -34,9 +34,11 @@ public class DWeek extends LinearLayout {
             dDays[i].setMonth(DWeekLogic.setMonthToDDay(daysNumber,i,weekN));
             dDays[i].setYear(DWeekLogic.setYearToDDay(daysNumber,i,weekN));
             dDays[i].setDay(daysNumber[i]);
+            dDays[i].setSelected(false);
             dDays[i].updateShadow();
             dDays[i].setListeners();
             dDays[i].setShadow();
+            dDays[i].wasSelected();
         }
     }
     public DDay getDay(int year, int month, int day){

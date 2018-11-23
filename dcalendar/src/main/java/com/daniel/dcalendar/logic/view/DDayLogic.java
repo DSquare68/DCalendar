@@ -1,5 +1,6 @@
 package com.daniel.dcalendar.logic.view;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -38,6 +39,9 @@ public class DDayLogic {
                 DEventDatabase ed = new DEventDatabase(dDay.getContext());
                 DEventsScroll.setEvents(ed.get(new Date(year,month,day,0,0,0)));
                 DEventsScroll.refreshEvents(dDay.getContext());
+                Global.selectedYear=year;
+                Global.selectedMonth=month;
+                Global.selectedDay=day;
                 dDay.setSelected(true);
                 if(previousDDaySelected!=null) previousDDaySelected.setSelected(false);
                 previousDDaySelected=dDay;

@@ -50,4 +50,7 @@ public class DEventsScroll extends ScrollView {
             events[j]=key;
         }
     }
+    public static void clear(){
+        container.removeAllViews();
+    }
 }

@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import com.daniel.dcalendar.DCalendar;
 import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.dview.DDay;
+import com.daniel.dcalendar.dview.DEventInScroll;
+import com.daniel.dcalendar.dview.DEventsScroll;
 import com.daniel.dcalendar.dview.DMonth;
 import com.daniel.dcalendar.dview.TopBar;
 
@@ -34,6 +36,7 @@ public class TopBarLogic {
                 Global.month=whichMonth;
                 Global.year=today[0].getYear();
                 TopBar.setMonthText(today[0].getMonth(),today[0].getYear());
+                //DEventsScroll.clear();
                 DMonth.renameDays(today[0].getYear(),whichMonth);
                 DMonth.refreshEvents();
                 DMonth.setToday();
@@ -53,6 +56,7 @@ public class TopBarLogic {
                 Global.month=whichMonth;
                 Global.year=today[0].getYear();
                 TopBar.setMonthText(today[0].getMonth(),today[0].getYear());
+                //DEventsScroll.clear();
                 DMonth.renameDays(today[0].getYear(),whichMonth);
                 DMonth.refreshEvents();
                 DMonth.setToday();

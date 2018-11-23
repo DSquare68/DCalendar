@@ -128,4 +128,10 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         isEvent=DDayLogic.isEvent(year,month,day,getContext());
         setDesign();
     }
+
+    public void wasSelected() {
+        if(Global.selectedYear==year&&Global.selectedMonth==month&&Global.selectedDay==day){
+            setSelected(true);
+        }
+    }
 }
