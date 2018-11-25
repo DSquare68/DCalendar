@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DCalendar">
+        <attr name="eventMonoColor" format="boolean"/>
+        <attr name="todayColor" format="color"/>
+        <attr name="mainEventColor" format="color"/>
+        <attr name="clickedColor" format="color"/>
+        <attr name="selectedColor" format="color"/>
+    </declare-styleable>
+</resources>

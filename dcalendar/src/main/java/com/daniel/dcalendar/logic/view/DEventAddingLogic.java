@@ -78,10 +78,40 @@ public class DEventAddingLogic {
         time = time=="" ? DEventAdding.endTime.getHint().toString() : time;
         long end=DateAndTime.toLong(date,time);
         long endDate=DateAndTime.toLong(date,null);
-        long reminder=0; //TODO reminder set time
+        long reminder=getReminderTime(DEventAdding.reminder.getBaseline());
 
         DEventDB event = new DEventDB(name,localization,description, start,end,reminder,startDate,endDate);
         edb.add(event);
+    }
+
+    private static long getReminderTime(int baseline) {
+        long fiveMines=300;
+        long oneHour=fiveMines*12;
+        long oneDay=oneHour*24;
+        switch (baseline){
+            case 1:
+                return fiveMines;
+            case 2:
+                return fiveMines*2;
+            case 3:
+                return fiveMines*3;
+            case 4:
+                return fiveMines*6;
+            case 5:
+                return oneHour;
+            case 6:
+                return oneHour*2;
+            case 7:
+                return oneHour*4;
+            case 8:
+                return oneDay;
+            case 9:
+                return oneDay*2;
+            case 10:
+                return oneDay*7;
+
+        }
+        return 0;
     }
 
     public static View.OnClickListener setOnClickListenerTime(final boolean start,final Context context, final Date dateChosen) {

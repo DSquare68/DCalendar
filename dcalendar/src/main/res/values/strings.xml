@@ -24,9 +24,14 @@
     <string-array name="reminder_time">
         <item>5 min</item>
         <item>10 min</item>
+        <item>15 min</item>
         <item>30 min</item>
         <item>1h</item>
+        <item>2h</item>
+        <item>4h</item>
         <item>1 day</item>
+        <item>2 day</item>
+        <item>1 week</item>
     </string-array>
     <string name="description">Description</string>
     <string name="short_description">Short description</string>
