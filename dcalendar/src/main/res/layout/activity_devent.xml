@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/really_long_text"
+            android:text="@string/description"
             android:textSize="@dimen/devent_time_text_size" />
     </LinearLayout>
 

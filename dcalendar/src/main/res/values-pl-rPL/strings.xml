@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">DCalendar</string>
+    <string-array name="month">
+        <item>Styczeń</item>
+        <item>Luty</item>
+        <item>Marzec</item>
+        <item>Kwiecień</item>
+        <item>Maj</item>
+        <item>Czerwiec</item>
+        <item>Lipiec</item>
+        <item>Sierpień</item>
+        <item>Wrzesień</item>
+        <item>Październik</item>
+        <item>Listopad</item>
+        <item>Grudzień</item>
+    </string-array>
+    <string name="event_name">Nazwa wydarzenia</string>
+    <string name="start_date">Początek (data):</string>
+    <string name="start_time">Początek (godzina):</string>
+    <string name="end_date">Koniec (data):</string>
+    <string name="end_time">Koniec (godzina):</string>
+    <string name="location">Lokalizacja:</string>
+    <string name="reminder">Przypomnij\nprzed:</string>
+    <string-array name="reminder_time">
+        <item>5 min</item>
+        <item>10 min</item>
+        <item>15 min</item>
+        <item>30 min</item>
+        <item>1h</item>
+        <item>2h</item>
+        <item>4h</item>
+        <item>1 dzień</item>
+        <item>2 dzień</item>
+        <item>1 tydzień</item>
+    </string-array>
+    <string name="description">Opic</string>
+    <string name="short_description">Krótki opis</string>
+    <string name="title_activity_devent_adding">Wydarzenie</string>
+    <string name="add">Dodaj</string>
+    <string name="city">Miasto</string>
+    <string-array name="day_names">
+        <item>Pn</item>
+        <item>W</item>
+        <item>Ś</item>
+        <item>C</item>
+        <item>Pt</item>
+        <item>S</item>
+        <item>N</item>
+    </string-array>
+    <string name="simple_time">10:00</string>
+</resources>

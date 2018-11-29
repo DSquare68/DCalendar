@@ -48,7 +48,4 @@
         <item>Su</item>
     </string-array>
     <string name="simple_time">10:00</string>
-    <string name="really_long_text">
-        As they rounded a bend in th
-    </string>
 </resources>
