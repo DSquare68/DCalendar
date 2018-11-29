@@ -6,7 +6,7 @@
         <activity
             android:name=".dview.DEventAdding"
             android:label="@string/title_activity_devent_adding"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".dview.DEvent"></activity>
     </application>
 

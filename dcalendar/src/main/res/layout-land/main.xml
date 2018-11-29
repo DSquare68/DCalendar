@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.daniel.dcalendar.dview.TopBar
+                android:id="@+id/top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/arrow_height_land" />
+
+            <com.daniel.dcalendar.dview.DWeekNames
+                android:id="@+id/week_names"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.daniel.dcalendar.dview.DMonth
+                android:id="@+id/month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.daniel.dcalendar.dview.DEventsScroll
+                android:id="@+id/devent_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

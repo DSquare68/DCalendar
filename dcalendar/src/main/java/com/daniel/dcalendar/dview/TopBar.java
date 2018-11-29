@@ -23,9 +23,18 @@ public class TopBar extends LinearLayout {
 
     public TopBar(Context context) {
         super(context);
+        init();
+    }
+
+    public TopBar(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    private void init(){
         setOrientation(HORIZONTAL);
         setWeightSum(5);
-        monthNames = context.getResources().getStringArray(R.array.month);
+        monthNames = this.getContext().getResources().getStringArray(R.array.month);
 
         LayoutParams lpL = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         lpL.weight=2;
@@ -45,6 +54,10 @@ public class TopBar extends LinearLayout {
 
 
         Date today = new Date();
+        if(Global.month!=0) {
+            today.setMonth(Global.month);
+            today.setYear(Global.year);
+        }
         nameOfMonth = new TextView(getContext());
         nameOfMonth.setText(monthNames[today.getMonth()]+" "+ String.valueOf(today.getYear()+1900));
         nameOfMonth.setGravity(Gravity.CENTER);
@@ -57,11 +70,6 @@ public class TopBar extends LinearLayout {
         Global.year=(new Date()).getYear();
         Global.month=(new Date()).getMonth();
     }
-
-    public TopBar(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
-
     public static void setMonthText(int month, int year) {
         nameOfMonth.setText(monthNames[month]+" "+ String.valueOf(year+1900));
     }

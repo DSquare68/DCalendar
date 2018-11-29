@@ -1,6 +1,8 @@
 package com.daniel.dcalendar.dview;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
@@ -18,6 +20,13 @@ public class DEventsScroll extends ScrollView {
         refreshEvents(getContext());
     }
 
+    public DEventsScroll(Context context,  @Nullable AttributeSet attrs){
+        super(context,attrs);
+        container=new LinearLayout(getContext());
+        container.setOrientation(LinearLayout.VERTICAL);
+        this.addView(container);
+        refreshEvents(getContext());
+    }
 
     public static void setEvents(com.daniel.dcalendar.event.DEvent[] event) {
         events = event;

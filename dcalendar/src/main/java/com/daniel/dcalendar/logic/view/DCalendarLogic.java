@@ -8,6 +8,6 @@ import java.util.Date;
 
 public class DCalendarLogic {
     public static void setToday(DCalendar dCalendar) {
-        dCalendar.getDMonth().getDay(new Date().getYear(),new Date().getMonth(), new Date().getDate()).setToday();
+        //dCalendar.getDMonth().getDay(new Date().getYear(),new Date().getMonth(), new Date().getDate()).setToday();
     }
 }

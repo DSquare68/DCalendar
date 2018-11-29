@@ -9,11 +9,12 @@ import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.dview.DDay;
 import com.daniel.dcalendar.dview.DEventAdding;
 import com.daniel.dcalendar.dview.DEventsScroll;
+import com.daniel.dcalendar.dview.DMonth;
 import com.daniel.dcalendar.event.DEventDatabase;
 import java.util.Date;
 
 public class DDayLogic {
-    private static DDay previousDDaySelected;
+    private static int previousDDaySelectedDay,previousDDaySelectedMonth,previousDDaySelectedYear;
     public static void openDialog(Context context) {
         Intent intent = new Intent(context, DEventAdding.class);
         context.startActivity(intent);
@@ -39,12 +40,16 @@ public class DDayLogic {
                 DEventDatabase ed = new DEventDatabase(dDay.getContext());
                 DEventsScroll.setEvents(ed.get(new Date(year,month,day,0,0,0)));
                 DEventsScroll.refreshEvents(dDay.getContext());
+                previousDDaySelectedDay=Global.selectedDay;
+                previousDDaySelectedMonth=Global.selectedMonth;
+                previousDDaySelectedYear=Global.selectedYear;
                 Global.selectedYear=year;
                 Global.selectedMonth=month;
                 Global.selectedDay=day;
                 dDay.setSelected(true);
-                if(previousDDaySelected!=null) previousDDaySelected.setSelected(false);
-                previousDDaySelected=dDay;
+                if(previousDDaySelectedDay!=0) {
+                    DMonth.getDay(previousDDaySelectedYear,previousDDaySelectedMonth,previousDDaySelectedDay).setSelected(false);
+                }
             }
         };
     }

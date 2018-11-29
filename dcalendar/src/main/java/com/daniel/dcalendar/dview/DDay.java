@@ -1,6 +1,7 @@
 package com.daniel.dcalendar.dview;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -37,7 +38,9 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         if(month==Global.month) shadowText=false; else shadowText=true;
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.weight=1;
-        lp.setMargins((int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday),(int) getResources().getDimension(R.dimen.side_padding_dday));
+        int paddingLR = (int) getResources().getDimension(R.dimen.side_padding_dday);
+        int padding = (int) (paddingLR*(context.getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE ? 0.15 : 1.0));
+        lp.setMargins(paddingLR,padding,paddingLR,padding);
         setLayoutParams(lp);
         setSelected(false);
 
@@ -53,7 +56,7 @@ public class DDay extends android.support.v7.widget.AppCompatButton {
         setOnLongClickListener(DDayLogic.setOnLongClickListener(year,month,day,getContext()));
     }
 
-    private void setDesign() {
+    public void setDesign() {
         if(this.setDefault){
             if(this.isEvent ==true){
                 setBackgroundResource(R.drawable.calendar_week_day_button_pressed);

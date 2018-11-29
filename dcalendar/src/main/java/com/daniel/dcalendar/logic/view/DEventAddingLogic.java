@@ -78,9 +78,9 @@ public class DEventAddingLogic {
         time = time=="" ? DEventAdding.endTime.getHint().toString() : time;
         long end=DateAndTime.toLong(date,time);
         long endDate=DateAndTime.toLong(date,null);
-        long reminder=getReminderTime(DEventAdding.reminder.getBaseline());
+        //long reminder=getReminderTime(DEventAdding.reminder.getBaseline());
 
-        DEventDB event = new DEventDB(name,localization,description, start,end,reminder,startDate,endDate);
+        DEventDB event = new DEventDB(name,localization,description, start,end,0,startDate,endDate);
         edb.add(event);
     }
 

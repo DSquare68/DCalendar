@@ -1,6 +1,8 @@
 package com.daniel.dcalendar.dview;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -14,7 +16,13 @@ public class DWeekNames extends LinearLayout {
         super(context);
         this.setWeightSum(7);
         this.setOrientation(HORIZONTAL);
-
+        init();
+    }
+    public DWeekNames(Context context,  @Nullable AttributeSet attrs){
+        super(context,attrs);
+        init();
+    }
+    private void init(){
         TextView day;
         LayoutParams dayP = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dayP.weight=1;

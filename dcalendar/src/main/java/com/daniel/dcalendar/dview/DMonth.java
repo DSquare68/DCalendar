@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.daniel.dcalendar.data.Global;
 import com.daniel.dcalendar.logic.view.DMonthLogic;
 
 import java.util.Date;
@@ -16,17 +17,23 @@ public class DMonth extends LinearLayout {
     public DMonth(Context context) {
         super(context);
         setOrientation(VERTICAL);
-        for(int i=0;i<NUMBER_OF_WEEKS;i++){
-            addView(new DWeek(context, DMonthLogic.setWeekDays(i),i));
-            dWeeks[i] =(DWeek) getChildAt(i);
-        }
+        init();
 
     }
 
     public DMonth(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setOrientation(VERTICAL);
+        init();
     }
-
+    private void init(){
+        for(int i=0;i<NUMBER_OF_WEEKS;i++){
+            addView(new DWeek(this.getContext(), DMonthLogic.setWeekDays(i),i));
+            dWeeks[i] =(DWeek) getChildAt(i);
+        }
+        setToday();
+        setChosen();
+    }
     public static void renameDays(int year,int whichMonth) {
         for(int i=0;i<NUMBER_OF_WEEKS;i++){
             dWeeks[i].renameDays(DMonthLogic.setWeekDays(year,whichMonth,i));
@@ -55,5 +62,11 @@ public class DMonth extends LinearLayout {
         DDay today = getDay(new Date().getYear(),new Date().getMonth(), new Date().getDate());
         if(today!=null)
             today.setToday();
+    }
+    public static void setChosen() {
+        if(Global.selectedDay==0) return;
+        DDay today = getDay(Global.selectedYear,Global.selectedMonth,Global.selectedDay);
+        if(today!=null)
+            today.wasSelected();
     }
 }
