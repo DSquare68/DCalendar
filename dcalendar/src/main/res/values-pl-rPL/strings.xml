@@ -49,6 +49,7 @@
     </string-array>
     <string name="simple_time">10:00</string>
     <string-array name="repetition_values">
+        <item>Brak</item>
         <item>Codziennie</item>
         <item>Co tydzień</item>
         <item>Miesięcznie</item>

@@ -5,7 +5,7 @@ import android.content.ContentValues;
 public class DEventDB extends DEvent{
     private long startDate,endDate;
 
-    public DEventDB(String name, String location, String description, long startTime, long endTime, long remindTime,long repetition, long startDate, long endDate) {
+    public DEventDB(String name, String location, String description, long startTime, long endTime, long remindTime, long startDate, long endDate, long repetition) {
         super(name, location, description, startTime, endTime, remindTime,repetition);
         this.startDate = startDate;
         this.endDate = endDate;

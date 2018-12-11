@@ -48,7 +48,11 @@ public class DDayLogic {
                 Global.selectedDay=day;
                 dDay.setSelected(true);
                 if(previousDDaySelectedDay!=0) {
-                    DMonth.getDay(previousDDaySelectedYear,previousDDaySelectedMonth,previousDDaySelectedDay).setSelected(false);
+                    DDay previous = DMonth.getDay(previousDDaySelectedYear,previousDDaySelectedMonth,previousDDaySelectedDay);
+                    if(previous==null)
+                        return;
+                    else
+                        previous.setSelected(false);
                 }
             }
         };

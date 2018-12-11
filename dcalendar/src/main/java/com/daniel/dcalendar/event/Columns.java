@@ -4,7 +4,7 @@ import android.provider.BaseColumns;
 
 public interface Columns extends BaseColumns {
     String DATA_BASE_NAME = "dcalendar.db";
-    int DATA_BASE_VERSION = 1;
+    int DATA_BASE_VERSION = 4;
 
     String TABLE_NAME="event";
 

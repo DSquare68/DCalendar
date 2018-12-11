@@ -2,8 +2,13 @@ package com.daniel.dcalendar.event;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.util.Calendar;
+import android.util.Log;
+
+import com.daniel.dcalendar.logic.app.DateAndTime;
 
 import java.util.Date;
 
@@ -31,6 +36,7 @@ public class DEventDatabase extends SQLiteOpenHelper {
                 Columns.END_TIME + " INTEGER, "+
                 Columns.START_DATE + " INTEGER, "+
                 Columns.END_DATE + " INTEGER, "+
+                Columns.REPETITION + " INTEGER, "+
                 Columns.LOCATION + " TEXT, "+
                 Columns.DESCRIPTION+ " TEXT, "+
                 Columns.REMIND_TIME+ " INTEGER ); ";
@@ -78,11 +84,48 @@ public class DEventDatabase extends SQLiteOpenHelper {
     public int[] getIDs(long time, SQLiteDatabase db){
         int[] result =null;
         Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_DATE+" AND "+time+" <= "+Columns.END_DATE,null);
-        if(c.getCount()<=0) return result;
-        result = new int[c.getCount()];
+        int[] repeated = getRepeated(time,db);
+        Log.d("fhjkdhadfjkdfhasjk",(c.getCount()+(repeated==null ? 0 : repeated.length)+""));
+        if(c.getCount()+(repeated==null ? 0 : repeated.length) <=0) return result;
+        result = new int[c.getCount()+(repeated==null ? 0 : repeated.length)];
+        c.moveToFirst();
+        int k=0;
+        for(int i=0;i<c.getCount();i++,c.moveToNext()){
+            result[k++]=c.getInt(0);
+        }
+        for(int i=0;i<(repeated==null ? 0 : repeated.length);i++){
+            result[k++]=repeated[i];
+        }
+        return result;
+    }
+
+    private int[] getRepeated(long time, SQLiteDatabase db) {
+        int[] ids =null;
+        Cursor c = db.rawQuery("SELECT "+Columns._ID+", "+Columns.START_DATE+", "+Columns.REPETITION+" FROM "+Columns.TABLE_NAME+" WHERE "+Columns.REPETITION+" > 0",null);
+        if(c.getCount()<=0) return ids;
+        int k=0;
+        ids= new int[c.getCount()];
         c.moveToFirst();
         for(int i=0;i<c.getCount();i++,c.moveToNext()){
-            result[i]=c.getInt(0);
+            if(c.getLong(2)==1||c.getLong(2)==2) {
+                Log.d("Asdf",time+"");
+                if ((time- c.getLong(1)>0)&&((double) (time - c.getLong(1))) % DateAndTime.repetitionToTime(c.getInt(2))==0)
+                    ids[k++]=c.getInt(0);
+            } else{
+                Date cal1 = new Date();
+                Date cal2 = new Date();
+                cal1.setTime(time);
+                cal2.setTime(c.getLong(1));
+                if(c.getLong(2)==3 && Math.abs(cal1.getDate()-cal2.getDate())<=2&&cal1.getDay()==cal2.getDay()){
+                    ids[k++]=c.getInt(0);
+                } else if(c.getLong(2)==4 && Math.abs(cal1.getDate()-cal2.getDate())<=2&&cal1.getDay()==cal2.getDay() && cal1.getMonth()==cal2.getMonth())
+                    ids[k++]=c.getInt(0);
+            }
+        }
+        if(k==0) return null;
+        int[] result = new int[k];
+        for(int i=0;i<k;i++){
+            result[i]=ids[i];
         }
         return result;
     }

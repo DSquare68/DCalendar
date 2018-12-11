@@ -79,7 +79,7 @@ public class DEventAddingLogic {
         long end=DateAndTime.toLong(date,time);
         long endDate=DateAndTime.toLong(date,null);
         //long reminder=getReminderTime(DEventAdding.reminder.getBaseline());
-        long repetition = DEventAdding.repetition.getBaseline();
+        long repetition = DEventAdding.repetition.getSelectedItemPosition();
 
         DEventDB event = new DEventDB(name,localization,description, start,end,0,startDate,endDate,repetition);
         edb.add(event);

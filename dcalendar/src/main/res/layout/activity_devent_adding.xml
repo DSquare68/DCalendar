@@ -160,14 +160,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
                     android:id="@+id/repetition_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:visibility="gone"
                     android:text="@string/repeat" />
 
                 <Spinner
@@ -175,8 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:entries="@array/reminder_time" />
+                    android:entries="@array/repetition_values" />
 
             </LinearLayout>
 
