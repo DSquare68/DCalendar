@@ -58,7 +58,7 @@ public class DEventDatabase extends SQLiteOpenHelper {
         c.moveToFirst();
         result = new DEvent[c.getCount()];
         for(int i=0;i<c.getCount();i++,c.moveToNext()){
-            result[i]= new DEvent(c.getString(0),c.getString(1),c.getString(2),c.getLong(3),c.getLong(4),c.getLong(5));
+            result[i]= new DEvent(c.getString(0),c.getString(1),c.getString(2),c.getLong(3),c.getLong(4),c.getLong(5),c.getLong(6));
             result[i].setId(ids[i]);
         }
         return result;
@@ -101,7 +101,7 @@ public class DEventDatabase extends SQLiteOpenHelper {
         Cursor c = db.rawQuery("select "+Columns.D_EVENT+" from "+Columns.TABLE_NAME+" where "+Columns._ID+" = "+id,null);
         if(c==null) return null;
         c.moveToFirst();
-        DEvent result= new DEvent(c.getString(0),c.getString(1),c.getString(2),c.getLong(3),c.getLong(4),c.getLong(5));
+        DEvent result= new DEvent(c.getString(0),c.getString(1),c.getString(2),c.getLong(3),c.getLong(4),c.getLong(5),c.getLong(6));
         result.setId(id);
         return result;
     }

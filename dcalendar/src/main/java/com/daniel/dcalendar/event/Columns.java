@@ -34,9 +34,10 @@ public interface Columns extends BaseColumns {
      */
     String END_DATE="end_date";
     String LOCATION="location";
+    String REPETITION="repetition";
     String DESCRIPTION="description";
     String REMIND_TIME="remind_time";
 
 
-    String D_EVENT=EVENT_NAME+", "+LOCATION+", "+DESCRIPTION+", "+START_TIME+", "+END_TIME+", "+REMIND_TIME;
+    String D_EVENT=EVENT_NAME+", "+LOCATION+", "+DESCRIPTION+", "+START_TIME+", "+END_TIME+", "+REMIND_TIME+", "+REPETITION;
 }

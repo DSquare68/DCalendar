@@ -22,7 +22,7 @@ public class DEventAdding extends AppCompatActivity {
     public static Button startTime, endTime;
     public static Button add;
     public static EditText name, localization, description;
-    public static Spinner reminder;
+    public static Spinner reminder, repetition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class DEventAdding extends AppCompatActivity {
         reminder = findViewById(R.id.reminder_spinner);
 
         description = findViewById(R.id.description_edit_text);
+        repetition = findViewById(R.id.repetition_spinner);
 
         add = findViewById(R.id.add);
     }

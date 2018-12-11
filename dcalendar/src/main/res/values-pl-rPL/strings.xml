@@ -48,4 +48,11 @@
         <item>N</item>
     </string-array>
     <string name="simple_time">10:00</string>
+    <string-array name="repetition_values">
+        <item>Codziennie</item>
+        <item>Co tydzień</item>
+        <item>Miesięcznie</item>
+        <item>Co rok</item>
+    </string-array>
+    <string name="repeat">Powtarzaj:</string>
 </resources>

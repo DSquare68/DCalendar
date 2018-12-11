@@ -5,11 +5,11 @@ import android.content.ContentValues;
 public class DEvent implements  Columns{
     int id;
     String name,location, description;
-    long startTime,endTime,remindTime;
+    long startTime,endTime,remindTime, repetition;
 
     public DEvent() {
     }
-    public DEvent(int id, String name, String location, String description, long startTime, long endTime, long remindTime) {
+    public DEvent(int id, String name, String location, String description, long startTime, long endTime, long remindTime, long repetition) {
         this.id=id;
         this.name = name;
         this.location = location;
@@ -17,14 +17,16 @@ public class DEvent implements  Columns{
         this.startTime = startTime;
         this.endTime = endTime;
         this.remindTime = remindTime;
+        this.repetition=repetition;
     }
-    public DEvent(String name, String location, String description, long startTime, long endTime, long remindTime) {
+    public DEvent(String name, String location, String description, long startTime, long endTime, long remindTime, long repetition) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
         this.remindTime = remindTime;
+        this.repetition=repetition;
     }
 
     public int getId() {
@@ -83,6 +85,14 @@ public class DEvent implements  Columns{
         this.remindTime = remindTime;
     }
 
+    public long getRepetition() {
+        return repetition;
+    }
+
+    public void setRepetition(long repetition) {
+        this.repetition = repetition;
+    }
+
     public ContentValues getContentValues() {
         ContentValues cv = new ContentValues();
         cv.put(EVENT_NAME,name);
@@ -91,6 +101,7 @@ public class DEvent implements  Columns{
         cv.put(LOCATION,location);
         cv.put(DESCRIPTION, description);
         cv.put(REMIND_TIME,remindTime);
+        cv.put(REPETITION,repetition);
         return  cv;
     }
 }

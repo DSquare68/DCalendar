@@ -5,8 +5,8 @@ import android.content.ContentValues;
 public class DEventDB extends DEvent{
     private long startDate,endDate;
 
-    public DEventDB(String name, String location, String description, long startTime, long endTime, long remindTime, long startDate, long endDate) {
-        super(name, location, description, startTime, endTime, remindTime);
+    public DEventDB(String name, String location, String description, long startTime, long endTime, long remindTime,long repetition, long startDate, long endDate) {
+        super(name, location, description, startTime, endTime, remindTime,repetition);
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -36,6 +36,7 @@ public class DEventDB extends DEvent{
         cv.put(LOCATION,location);
         cv.put(DESCRIPTION, description);
         cv.put(REMIND_TIME,remindTime);
+        cv.put(REPETITION,repetition);
         cv.put(START_DATE,startDate);
         cv.put(END_DATE,endDate);
         return  cv;

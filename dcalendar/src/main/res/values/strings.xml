@@ -48,4 +48,11 @@
         <item>Su</item>
     </string-array>
     <string name="simple_time">10:00</string>
+    <string-array name="repetition_values">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+    <string name="repeat">Repeat:</string>
 </resources>
