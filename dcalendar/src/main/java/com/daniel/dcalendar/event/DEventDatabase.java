@@ -85,7 +85,6 @@ public class DEventDatabase extends SQLiteOpenHelper {
         int[] result =null;
         Cursor c = db.rawQuery("SELECT "+Columns._ID+" FROM "+Columns.TABLE_NAME+" WHERE "+time+" >= "+Columns.START_DATE+" AND "+time+" <= "+Columns.END_DATE,null);
         int[] repeated = getRepeated(time,db);
-        Log.d("fhjkdhadfjkdfhasjk",(c.getCount()+(repeated==null ? 0 : repeated.length)+""));
         if(c.getCount()+(repeated==null ? 0 : repeated.length) <=0) return result;
         result = new int[c.getCount()+(repeated==null ? 0 : repeated.length)];
         c.moveToFirst();
@@ -101,24 +100,32 @@ public class DEventDatabase extends SQLiteOpenHelper {
 
     private int[] getRepeated(long time, SQLiteDatabase db) {
         int[] ids =null;
-        Cursor c = db.rawQuery("SELECT "+Columns._ID+", "+Columns.START_DATE+", "+Columns.REPETITION+" FROM "+Columns.TABLE_NAME+" WHERE "+Columns.REPETITION+" > 0",null);
+        Cursor c = db.rawQuery("SELECT "+Columns._ID+", "+Columns.START_DATE+", "+Columns.END_DATE+", "+Columns.REPETITION+" FROM "+Columns.TABLE_NAME+" WHERE "+Columns.REPETITION+" > 0",null);
         if(c.getCount()<=0) return ids;
         int k=0;
         ids= new int[c.getCount()];
         c.moveToFirst();
         for(int i=0;i<c.getCount();i++,c.moveToNext()){
-            if(c.getLong(2)==1||c.getLong(2)==2) {
-                Log.d("Asdf",time+"");
-                if ((time- c.getLong(1)>0)&&((double) (time - c.getLong(1))) % DateAndTime.repetitionToTime(c.getInt(2))==0)
+            if(c.getLong(3)==1||c.getLong(3)==2) {
+                if ((time- c.getLong(1)>0)&&
+                        (( (time - c.getLong(1))) % DateAndTime.repetitionToTime(c.getInt(3))==0
+                        || ( (time - c.getLong(1))) % DateAndTime.repetitionToTime(c.getInt(3))+( (time - c.getLong(2))) % DateAndTime.repetitionToTime(c.getInt(3))==( (time - c.getLong(1))) % DateAndTime.repetitionToTime(1)+( (time - c.getLong(1))) % DateAndTime.repetitionToTime(1)-1
+                        || ( (time - c.getLong(2))) % DateAndTime.repetitionToTime(c.getInt(3))==0))
                     ids[k++]=c.getInt(0);
             } else{
                 Date cal1 = new Date();
                 Date cal2 = new Date();
+                Date cal3 = new Date();
                 cal1.setTime(time);
                 cal2.setTime(c.getLong(1));
-                if(c.getLong(2)==3 && Math.abs(cal1.getDate()-cal2.getDate())<=2&&cal1.getDay()==cal2.getDay()){
+                cal3.setTime(c.getLong(2));
+                if(c.getLong(3)==3 && (cal1.getTime()-cal2.getTime())>0 && (Math.abs(cal1.getDate()-cal2.getDate())<=3&&cal1.getDay()==cal2.getDay()
+                                                    || (((double) (cal1.getTime() - cal2.getTime()) % DateAndTime.repetitionToTime(1)+((double) (cal1.getTime() - cal3.getTime())) % DateAndTime.repetitionToTime(1)< Math.abs(cal2.getTime()-cal3.getTime()) % DateAndTime.repetitionToTime(1)  )
+                                                    || Math.abs(cal1.getDate()-cal3.getDate())<=3&&cal1.getDay()==cal3.getDay())))
                     ids[k++]=c.getInt(0);
-                } else if(c.getLong(2)==4 && Math.abs(cal1.getDate()-cal2.getDate())<=2&&cal1.getDay()==cal2.getDay() && cal1.getMonth()==cal2.getMonth())
+                else if(c.getLong(3)==4 && (cal1.getTime()-cal2.getTime())>0 && Math.abs(cal1.getDate()-cal2.getDate())<=3&&cal1.getDay()==cal2.getDay() && cal1.getMonth()==cal2.getMonth()
+                                                    || ((double) (cal1.getTime() - cal2.getTime()) % DateAndTime.repetitionToTime(1)+((double) (cal1.getTime() - cal3.getTime())) % DateAndTime.repetitionToTime(1)< Math.abs(cal2.getTime()-cal3.getTime()) % DateAndTime.repetitionToTime(1)  ) && cal2.getMonth()==cal3.getMonth()
+                                                    || Math.abs(cal1.getDate()-cal3.getDate())<=3&&cal1.getDay()==cal3.getDay()&& cal2.getMonth()==cal3.getMonth())
                     ids[k++]=c.getInt(0);
             }
         }

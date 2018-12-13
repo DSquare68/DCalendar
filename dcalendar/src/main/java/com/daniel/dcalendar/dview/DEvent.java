@@ -13,7 +13,7 @@ import java.util.Date;
 public class DEvent extends AppCompatActivity {
 
     com.daniel.dcalendar.event.DEvent dEvent;
-    TextView startTime,endTime, name, location, description;
+    TextView startTime,endTime, name, location, description, repetition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,7 @@ public class DEvent extends AppCompatActivity {
         name=findViewById(R.id.name_devent);
         location=findViewById(R.id.location_devent);
         description=findViewById(R.id.description_devent);
+        repetition=findViewById(R.id.repetition_devent);
     }
 
     private void setValues() {
@@ -46,5 +47,7 @@ public class DEvent extends AppCompatActivity {
         name.setText(dEvent.getName());
         location.setText(dEvent.getLocation());
         description.setText(dEvent.getDescription());
+        String[] rep = getApplicationContext().getResources().getStringArray(R.array.repetition_values);
+        repetition.setText(rep[(int)dEvent.getRepetition()]);
     }
 }
