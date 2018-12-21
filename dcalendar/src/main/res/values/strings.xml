@@ -56,4 +56,5 @@
         <item>Yearly</item>
     </string-array>
     <string name="repeat">Repeat:</string>
+    <string name="no_events">No Events Found</string>
 </resources>

@@ -56,4 +56,5 @@
         <item>Co rok</item>
     </string-array>
     <string name="repeat">Powtarzaj:</string>
+    <string name="no_events">Nie znaleziono wydarzenia</string>
 </resources>
