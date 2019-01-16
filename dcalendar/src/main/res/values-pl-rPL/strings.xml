@@ -37,7 +37,7 @@
     <string name="short_description">Krótki opis</string>
     <string name="title_activity_devent_adding">Wydarzenie</string>
     <string name="add">Dodaj</string>
-    <string name="city">Miasto</string>
+    <string name="country_city_address_etc">Kraj/Miasto/Adress</string>
     <string-array name="day_names">
         <item>Pn</item>
         <item>W</item>

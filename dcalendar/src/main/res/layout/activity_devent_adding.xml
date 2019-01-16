@@ -28,17 +28,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/event_name_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/event_name" />
 
                 <EditText
                     android:id="@+id/event_name_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:hint="@string/event_name"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:inputType="text" />
             </LinearLayout>
@@ -52,27 +47,27 @@
 
                 <TextView
                     android:id="@+id/start_date_text_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/start_date" />
 
                 <Button
                     android:id="@+id/start_date_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.9" />
 
                 <TextView
                     android:id="@+id/start_time_text_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/start_time" />
 
                 <Button
                     android:id="@+id/start_time_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
@@ -87,27 +82,27 @@
 
                 <TextView
                     android:id="@+id/end_date_text_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/end_date" />
 
                 <Button
                     android:id="@+id/end_date_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.9" />
 
                 <TextView
                     android:id="@+id/end_time_text_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/end_time" />
 
                 <Button
                     android:id="@+id/end_time_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
@@ -133,9 +128,9 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     android:maxLines="1"
-                    android:hint="@string/city" />
+                    android:hint="@string/country_city_address_etc" />
 
                 <TextView
                     android:id="@+id/reminder_text_view"
@@ -172,7 +167,7 @@
                     android:id="@+id/repetition_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     android:entries="@array/repetition_values" />
 
             </LinearLayout>
@@ -184,18 +179,12 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/description_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/description" />
-
                 <EditText
                     android:id="@+id/description_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:hint="@string/description"
                     android:ems="10"
                     android:inputType="textMultiLine"
                     android:tooltipText="@string/short_description" />

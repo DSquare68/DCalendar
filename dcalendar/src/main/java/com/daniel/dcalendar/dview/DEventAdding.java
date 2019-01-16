@@ -30,6 +30,8 @@ public class DEventAdding extends AppCompatActivity {
         LinearLayout container = new LinearLayout(getApplicationContext());
         setContentView(R.layout.activity_devent_adding);
         setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         findViews();
         setListeners();
         setHints();
@@ -75,5 +77,11 @@ public class DEventAdding extends AppCompatActivity {
 
     public void addEvent(View view){
         DEventAddingLogic.addEvent(getApplicationContext());
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

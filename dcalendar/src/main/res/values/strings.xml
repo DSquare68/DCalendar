@@ -37,7 +37,7 @@
     <string name="short_description">Short description</string>
     <string name="title_activity_devent_adding">DEventAdding</string>
     <string name="add">Add</string>
-    <string name="city">City</string>
+    <string name="country_city_address_etc">Country/City/Address</string>
     <string-array name="day_names">
         <item>M</item>
         <item>Tu</item>
